@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecTracSelenium", "RecTracSelenium\RecTracSelenium.csproj", "{8F4070BE-D094-4E4B-9633-83F91A96AC15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecTracUITests", "RecTracSelenium\RecTracUITests.csproj", "{8F4070BE-D094-4E4B-9633-83F91A96AC15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecTracPom", "RecTracPom\RecTracPom.csproj", "{43C7B883-284B-41FC-AF2C-07CE8557B794}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecTracActions", "RecTracActions\RecTracActions.csproj", "{F2A472D6-1AEC-41EC-BCC1-25291A0EFB70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{8F4070BE-D094-4E4B-9633-83F91A96AC15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F4070BE-D094-4E4B-9633-83F91A96AC15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F4070BE-D094-4E4B-9633-83F91A96AC15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43C7B883-284B-41FC-AF2C-07CE8557B794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43C7B883-284B-41FC-AF2C-07CE8557B794}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43C7B883-284B-41FC-AF2C-07CE8557B794}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43C7B883-284B-41FC-AF2C-07CE8557B794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A472D6-1AEC-41EC-BCC1-25291A0EFB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A472D6-1AEC-41EC-BCC1-25291A0EFB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A472D6-1AEC-41EC-BCC1-25291A0EFB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A472D6-1AEC-41EC-BCC1-25291A0EFB70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

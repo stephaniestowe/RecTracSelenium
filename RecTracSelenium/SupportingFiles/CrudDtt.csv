@@ -1,0 +1,2 @@
+NavigateTo	AddResource
+RecTracActions.Ticket.NavigateTicketManagement();	RecTracActions.Ticket.AddTicket
