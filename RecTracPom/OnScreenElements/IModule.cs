@@ -12,6 +12,6 @@
         void DoPrimaryFilter(string value);
 
         string GetChangedText();
-
+        bool IsExists(string code);
     }
 }

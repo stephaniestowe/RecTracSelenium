@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
 
 namespace RecTracPom
 {
@@ -13,9 +14,9 @@ namespace RecTracPom
         
         public enum Browsers
         {
-            IE,
             Chrome,
             Edge,
+            Firefox
         }
 
         private BrowserWindow() 
@@ -54,6 +55,7 @@ namespace RecTracPom
             
         }
 
+        [Obsolete]
         public void Load(string Url, Browsers Browser)
         {
             this.Url = Url;
@@ -63,10 +65,6 @@ namespace RecTracPom
             
             switch (Browser)
             {
-                case Browsers.IE:
-                    driver = new InternetExplorerDriver(driverLocation);
-                    driver.Manage().Window.Maximize();
-                    break;
                 case Browsers.Edge:
                     driver = new EdgeDriver(driverLocation);
                     driver.Manage().Window.Maximize();
@@ -76,8 +74,12 @@ namespace RecTracPom
                     options.AddArgument("--start-maximized");
                     driver = new ChromeDriver(driverLocation, options);
                     break;
+                case Browsers.Firefox:
+                    driver = new FirefoxDriver(driverLocation);
+                    driver.Manage().Window.Maximize();
+                    break;
                 default:
-                    driver = new InternetExplorerDriver(driverLocation);
+                    driver = new ChromeDriver(driverLocation);
                     break;
 
             }

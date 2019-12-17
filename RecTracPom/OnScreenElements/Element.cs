@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using SeleniumExtras.WaitHelpers;
 
 namespace RecTracPom.OnScreenElements
 {
@@ -33,7 +35,10 @@ namespace RecTracPom.OnScreenElements
         {
             get
             {
-                return BrowserWindow.Instance.Driver.FindElement(finder);
+                System.TimeSpan waitTime = new System.TimeSpan(0, 0, 20);
+                OpenQA.Selenium.Support.UI.WebDriverWait wait = new OpenQA.Selenium.Support.UI.WebDriverWait(BrowserWindow.Instance.Driver, waitTime);
+                IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(finder));
+                return element;
             }
         }
 
@@ -43,6 +48,12 @@ namespace RecTracPom.OnScreenElements
             {
                 return WebElement.Text;
             }
+        }
+
+        public void Hover()
+        {
+            Actions action = new Actions(BrowserWindow.Instance.Driver);
+            action.MoveToElement(WebElement).Perform();
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using RecTracPom.OnScreenElements;
+using System;
 using System.Collections.Generic;
 
 namespace RecTracPom
@@ -10,7 +11,6 @@ namespace RecTracPom
         private static UpdatePanelPosTicket instance = null;
 
         private readonly By byTicketCode = By.XPath("//input[starts-with(@id,'psticketmain_ticketcode')]");
-        private readonly By bySave = By.XPath("//button[@title='Save']");
         private readonly By byLongDescription = By.XPath("//input[starts-with(@id, 'psticketmain_longdescription')]");
         private readonly By byShortDescription = By.XPath("//input[starts-with(@id, 'psticketmain_shortdescription')]");
 
@@ -28,25 +28,21 @@ namespace RecTracPom
                     instance = new UpdatePanelPosTicket();
                 }
 
-                instance.requiredTextboxes.Add(new Textbox(instance.byTicketCode)) ;
+                instance.requiredTextboxes.Add(new Textbox(instance.byTicketCode));
 
                 return instance;
             }
         }
 
-        public List<Textbox> Required 
-        { 
+        public List<Textbox> Required
+        {
             get
             {
-                return requiredTextboxes; 
+                return requiredTextboxes;
             }
         }
 
-        public void ButtonSaveClick()
-        {
-            Button btnSave = new Button(bySave);
-            btnSave.Click();
-        }
+
         public void SetTicketCode(string ticketCode)
         {
             Textbox txtTicketCode = new OnScreenElements.Textbox(byTicketCode);
@@ -79,6 +75,5 @@ namespace RecTracPom
         {
             SetShortDescription(value);
         }
-
     }
 }

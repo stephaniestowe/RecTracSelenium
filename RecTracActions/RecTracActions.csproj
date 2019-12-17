@@ -48,7 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activity.cs" />
     <Compile Include="CrudDriver.cs" />
+    <Compile Include="CrudItem.cs" />
+    <Compile Include="Household.cs" />
+    <Compile Include="IManagementActor.cs" />
+    <Compile Include="ManagementActor.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

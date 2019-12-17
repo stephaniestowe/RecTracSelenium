@@ -1,4 +1,7 @@
 ﻿[*.cs]
 
+# IDE0025: Use expression body for properties
+csharp_style_expression_bodied_properties = true:none
+
 # CA1822: Mark members as static
 dotnet_diagnostic.CA1822.severity = none

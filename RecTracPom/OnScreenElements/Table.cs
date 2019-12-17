@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using SeleniumExtras.WaitHelpers;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -59,7 +60,11 @@ namespace RecTracPom.OnScreenElements
         }
         private IWebElement GetTable()
         {
-            IWebElement table = BrowserWindow.Instance.Driver.FindElement(finder);
+
+            System.TimeSpan waitTime = new System.TimeSpan(0, 0, 20);
+            OpenQA.Selenium.Support.UI.WebDriverWait wait = new OpenQA.Selenium.Support.UI.WebDriverWait(BrowserWindow.Instance.Driver, waitTime);
+            IWebElement table = wait.Until(ExpectedConditions.ElementIsVisible(finder));
+
             if (table.TagName.ToUpper() != "TABLE")
             {
                 throw new OpenQA.Selenium.InvalidElementStateException("Finder object does not find a TABLE element. Cannot get rowcount.");

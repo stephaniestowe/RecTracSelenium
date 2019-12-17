@@ -64,13 +64,12 @@ namespace RecTracPom
             }
         }
 
-        public static bool IsTicketExists(string ticketCode)
+        public bool IsExists(string code)
         {
            
-            
-            SetTicketCodeFilter(ticketCode);
+            SetTicketCodeFilter(code);
             Table table = new Table(byTicketDataTable);
-            
+
             foreach (IWebElement row in table.Rows)
             {
                 try
@@ -79,7 +78,7 @@ namespace RecTracPom
 
                     foreach (IWebElement col in cols)
                     {
-                        if (col.Text.ToLower() == ticketCode.ToLower())
+                        if (col.Text.ToLower() == code.ToLower())
                         {
                             return true;
                         }
@@ -103,5 +102,6 @@ namespace RecTracPom
         {
             return GetShortDescription;
         }
+
     }
 }

@@ -10,13 +10,6 @@ namespace RecTracSelenium
     {
         private const string url = "http://qa-stephanies:4180/wbwsc/clientdemo.wsc/login.html?InterfaceParameter=RecTracNextGenStephanie#/login";
 
-        [TestMethod]
-        public void OpenandCloseTest()
-        {
 
-            Session.OpenStandard(BrowserWindow.Browsers.Chrome, url, "zzz", "password");
-            Session.CloseStandard();
-
-        }
     }
 }

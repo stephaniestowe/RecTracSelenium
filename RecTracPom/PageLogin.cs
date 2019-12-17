@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.Collections.ObjectModel;
 using System.Threading;
 
 namespace RecTracPom
@@ -45,6 +46,12 @@ namespace RecTracPom
 
         public string GetHeader()
         {
+            ReadOnlyCollection<IWebElement> localLookupRoot = driver.FindElements(this.lookupRoot);
+            if (localLookupRoot.Count == 0)
+            {
+                return "";
+            }
+
             return driver.FindElement(byHeader).Text;
         }
 
@@ -52,7 +59,8 @@ namespace RecTracPom
         {
             get
             {
-                Thread.Sleep(2000); //TODO: Figure correct explicit wait.
+                System.TimeSpan waitTime = new System.TimeSpan(0, 0, 1);
+                Thread.Sleep(waitTime); 
                 if (GetHeader() == LoginContinue)
                 {
                     return true;

@@ -1,9 +1,11 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System.Threading;
 
 namespace RecTracPom.OnScreenElements
 {
     // a dialog instance is found not by a BY object as with many elements but by the text within the title
-    public class Dialog
+    public class Dialog 
     {
         private string sTitle;
         private IWebElement dialog;
@@ -16,17 +18,16 @@ namespace RecTracPom.OnScreenElements
         internal Dialog(string title)
         {
             sTitle = title;
-            By byDialog = By.XPath("//div[contains(@class, 'ui-dialog')]");
+            By byDialog = By.XPath("//div[@role='dialog']");
             By byTitle = By.XPath("//span[@class='ui-dialog-title' and text()='" + title +"']");
-            try
-            {
-                dialog = BrowserWindow.Instance.Driver.FindElement(byDialog);
-                titleElement = dialog.FindElement(byTitle);
-            }
-            catch(OpenQA.Selenium.NoSuchElementException)
-            {
-                throw new NoSuchElementException("The desired dialog does not exist with the given title.");
-            }
+
+            System.TimeSpan waitTime = new System.TimeSpan(0, 0, 60);
+            OpenQA.Selenium.Support.UI.WebDriverWait wait = new OpenQA.Selenium.Support.UI.WebDriverWait(BrowserWindow.Instance.Driver, waitTime);
+            dialog = BrowserWindow.Instance.Driver.FindElement(byDialog);
+            //dialog = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(byDialog));
+            titleElement = dialog.FindElement(byTitle);
+            
+
         }
 
 

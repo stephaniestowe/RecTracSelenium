@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using RecTracPom.OnScreenElements;
 
 namespace RecTracPom
@@ -7,11 +8,12 @@ namespace RecTracPom
     {
         private static PageHome instance = null;
         private IWebDriver driver;
-        
+        private static readonly By byLogoutEndSession = By.XPath("//button[@aria-label='Logout and End Session']");
+        private static readonly By byMenu = By.XPath("//button[@aria-label='Menu']");
+        private static readonly By byFilterMenu = By.CssSelector("#applications-popout > div.sidebar-popout-body > input");
 
         private PageHome()
         {
-            // throw error if this is access where no instance of browserwindow? Or let the error bubble up?
             driver = BrowserWindow.Instance.Driver;
         }
 
@@ -27,10 +29,6 @@ namespace RecTracPom
             }
         }
 
-        private static readonly By byLogoutEndSession = By.XPath("//button[@aria-label='Logout and End Session']");
-        private static readonly By byMenu = By.XPath("//button[@aria-label='Menu']");
-        private static readonly By byFilterMenu = By.CssSelector("#applications-popout > div.sidebar-popout-body > input");
-        
 
         public void ClickBtnLogoutEndSession()
         {
@@ -48,10 +46,11 @@ namespace RecTracPom
             Textbox txtFilterMenu = new Textbox(byFilterMenu);
             txtFilterMenu.SetText(navigateText);
 
+
             // specifically built xPath
-            By byTicketManagement = By.XPath("//button[@title='" + navigateText + "']");
-            Button btnTicketManagement = new Button(byTicketManagement);
-            btnTicketManagement.Click();
+            By by = By.XPath("//button[@title='" + navigateText + "']");
+            Button btn = new Button(by);
+            btn.Click();
 
         }
         

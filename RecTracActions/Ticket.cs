@@ -1,49 +1,57 @@
 ﻿using RecTracPom;
-using System.Threading;
 
 namespace RecTracActions
 {
-    public static class Ticket
+    public class Ticket : ManagementActor, IManagementActor
     {
-        public static void NavigateTicketManagement()
+        private static Ticket instance = null;
+        private const string navString = "Ticket Management";
+
+        private Ticket()
         {
-            PageHome.Instance.Navigate("Ticket Management");
+
         }
 
-        public static void AddTicket(string ticketCode)
+        public static Ticket Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Ticket();
+                }
+                return instance;
+            }
+        }
+        public void Navigate()
+        {
+            PageHome.Instance.Navigate(navString);
+        }
+
+        public void Add(string code)
         {
             
-            PanelModuleBottomButtons.AddButtonClick();
+            PanelModuleCommon.AddButtonClick();
             DialogDefaultRecordAdd dlg = new DialogDefaultRecordAdd();
             dlg.ContinueButtonClick();
-            UpdatePanelPosTicket.Instance.SetTicketCode(ticketCode);
-            UpdatePanelPosTicket.Instance.ButtonSaveClick();
+            UpdatePanelPosTicket.Instance.SetTicketCode(code);
+            UpdatePanelsBottomButtons.SaveButtonClick();
         }
 
-        public static void DeleteTicket(string ticketCode)
+        public void Delete(string code)
         {
-            SelectTicket(ticketCode);
-            PanelModuleBottomButtons.MoreButtonClick();
-            PanelModuleBottomButtons.DeleteButtonClick();
-            DialogInformation dlg = new DialogInformation("Information");
-            dlg.ClickButtonByButtonTitle("Yes");
-            // a delay is required here because selenium runs so fast that the next elements may not be ready to receive
-            // input but also present so it does not fail
-            Thread.Sleep(2000);
-
+            SelectTicket(code);
+            base.Delete();
         }
 
-        public static bool IsTicketExists(string ticketCode)
+        public bool IsExists(string code)
         {
-            return ModulePosTicketManagement.IsTicketExists(ticketCode);
-            
+            return ModulePosTicketManagement.Instance.IsExists(code);
         }
 
-        private static void SelectTicket(string ticketCode)
+        private void SelectTicket(string ticketCode)
         {
-            _ = IsTicketExists(ticketCode);
-
-
+            _ = IsExists(ticketCode);
         }
     }
 }
