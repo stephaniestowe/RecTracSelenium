@@ -53,7 +53,6 @@
     <Compile Include="ActivitySection.cs" />
     <Compile Include="CrudDriver.cs" />
     <Compile Include="CrudItem.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Household.cs" />
     <Compile Include="IManagementActor.cs" />
     <Compile Include="ManagementActor.cs" />
