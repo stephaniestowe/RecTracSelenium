@@ -36,6 +36,7 @@ namespace RecTracPom
 
         public static void ChangeButtonClick()
         {
+            Thread.Sleep(1000);
             Button btnChange = new Button(byChangeButton);
             btnChange.Click();
         }
@@ -52,9 +53,26 @@ namespace RecTracPom
         /// <summary>Hovers over active module tab to expose the close button then clicks the close button.</summary>
         public static void DoCloseActiveTabEntire()
         {
-            Element tab = new Element(byTab);
-            tab.Hover();
-            Button close = new Button(byClosePanelButton);
+            // So there is a defect in EDGE whereby the behavior of the code containted in the hover on the tab executes without
+            // error but the action underneath does not occur. So in Edge, callng the hover method of the TAB as seen in the else condition 
+            // below
+            // 
+            IWebElement close;
+            
+            if (BrowserWindow.Instance.Browser == BrowserWindow.Browsers.Edge)
+            {
+                close = BrowserWindow.Instance.Driver.FindElement(byClosePanelButton);
+                string js = "arguments[0].style.height='auto'; arguments[0].style.visibility='visible'; arguments[0].style.display='inline';";
+                IWebDriver driver = BrowserWindow.Instance.Driver;
+                IWebElement element = close;
+                ((IJavaScriptExecutor)driver).ExecuteScript(js, element);
+            }
+            else
+            {
+                Element tab = new Element(byTab);
+                tab.Hover();
+                close = new Button(byClosePanelButton).WebElement;
+            }
             close.Click();
         }
     }

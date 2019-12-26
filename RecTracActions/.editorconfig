@@ -5,3 +5,9 @@ csharp_style_expression_bodied_properties = true:none
 
 # CA1822: Mark members as static
 dotnet_diagnostic.CA1822.severity = none
+
+# IDE0022: Use block body for methods
+csharp_style_expression_bodied_methods = false:none
+
+# CA1305: Specify IFormatProvider
+dotnet_diagnostic.CA1305.severity = silent

@@ -41,15 +41,17 @@ namespace RecTracActions
         {
             CrudItem item = new CrudItem();
 
-            item = new CrudItem(UpdatePanelHousehold.Instance, ModuleHouseholdManagement.Instance, Household.Instance);
+            item = new CrudItem("Household", UpdatePanelHousehold.Instance, ModuleHouseholdManagement.Instance, Household.Instance);
             itemsToCrud.Add(item);
 
-            item = new CrudItem(UpdatePanelPosTicket.Instance, ModulePosTicketManagement.Instance, Ticket.Instance);
+            item = new CrudItem("Activity Section", UpdatePanelActivitySection.Instance, ModuleActivitySectionManagement.Instance, ActivitySection.Instance);
             itemsToCrud.Add(item);
 
-            item = new CrudItem(UpdatePanelActivity.Instance, ModuleActivityManagement.Instance, Activity.Instance);
+            item = new CrudItem("Ticket", UpdatePanelPosTicket.Instance, ModulePosTicketManagement.Instance, Ticket.Instance);
             itemsToCrud.Add(item);
 
+            item = new CrudItem("Activity", UpdatePanelActivity.Instance, ModuleActivityManagement.Instance, Activity.Instance);
+            itemsToCrud.Add(item);
 
         }
 

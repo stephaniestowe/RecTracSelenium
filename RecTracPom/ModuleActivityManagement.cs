@@ -10,7 +10,7 @@ namespace RecTracPom
         private static By byShortDescription = By.XPath("//td[@data-property='aractivity_shortdescription']/div"); // get the div within the cell for the text
         private static ModuleActivityManagement instance = null;
 
-        public Table DataGrid => new Table(byActivityDataTable); // determine prefered syntax
+        public Table DataGrid => new Table(byActivityDataTable);
 
         private ModuleActivityManagement()
         {
@@ -62,7 +62,9 @@ namespace RecTracPom
             {
                 try
                 {
-                    ReadOnlyCollection<IWebElement> cols = row.FindElements(byActivityCodeFilter);
+                    //Get the columns for returned rows to seek an exact match
+                    By byColumnsForSection = By.XPath("//td[@data-property='aractivity_activitycode']/div");
+                    ReadOnlyCollection<IWebElement> cols = row.FindElements(byColumnsForSection);
 
                     foreach (IWebElement col in cols)
                     {

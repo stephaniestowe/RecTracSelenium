@@ -37,14 +37,6 @@ namespace RecTracPom
         }
 
 
-        public List<Textbox> Required
-        {
-            get
-            {
-                return requiredTextboxes;
-            }
-        }
-
         public void SetActivityCode(string code)
         {
             Textbox txt = new OnScreenElements.Textbox(byActivityCode);
@@ -62,19 +54,6 @@ namespace RecTracPom
         {
             Textbox txtLongDescription = new OnScreenElements.Textbox(byLongDescription);
             txtLongDescription.SetText(description);
-
-        }
-
-        public void SetRequiredValues(string value)
-        {
-            foreach (Textbox item in requiredTextboxes)
-            {
-                item.SetText(value);
-            }
-            // bypass a defect in RecTrac that only happens with the speed of automation.
-            // error that item already exists.
-            System.TimeSpan span = new System.TimeSpan(0, 0, 1);
-            Thread.Sleep(span);
 
         }
 

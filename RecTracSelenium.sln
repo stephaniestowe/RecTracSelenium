@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecTracPom", "RecTracPom\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecTracActions", "RecTracActions\RecTracActions.csproj", "{F2A472D6-1AEC-41EC-BCC1-25291A0EFB70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTracPom", "WebTracPom\WebTracPom.csproj", "{485F9A56-1FB9-4F6C-8062-B9684254D614}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F2A472D6-1AEC-41EC-BCC1-25291A0EFB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2A472D6-1AEC-41EC-BCC1-25291A0EFB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2A472D6-1AEC-41EC-BCC1-25291A0EFB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{485F9A56-1FB9-4F6C-8062-B9684254D614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{485F9A56-1FB9-4F6C-8062-B9684254D614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{485F9A56-1FB9-4F6C-8062-B9684254D614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{485F9A56-1FB9-4F6C-8062-B9684254D614}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

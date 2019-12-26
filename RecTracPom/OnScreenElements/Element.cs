@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using SeleniumExtras.WaitHelpers;
+using System.Threading;
 
 namespace RecTracPom.OnScreenElements
 {
@@ -53,7 +54,22 @@ namespace RecTracPom.OnScreenElements
         public void Hover()
         {
             Actions action = new Actions(BrowserWindow.Instance.Driver);
-            action.MoveToElement(WebElement).Perform();
+            action.MoveToElement(WebElement).Build().Perform();
+            Thread.Sleep(1000);
+            
+        }
+
+        public void Click()
+        {
+            
+            // According the Stack Overflow, firefox needs a wee second for click. We should certainly be open to 
+            // different solutions.
+            if (BrowserWindow.Instance.Browser == BrowserWindow.Browsers.Firefox)
+            {
+                Thread.Sleep(400);
+            }
+
+            WebElement.Click();
         }
 
     }

@@ -1,18 +1,16 @@
 ﻿using System;
 using OpenQA.Selenium;
-using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Remote;
 
-namespace RecTracPom
+namespace WebTracPom
 {
     public class BrowserWindow
     {
         const string driverLocation = "C:\\SeleniumDrivers";
         private static BrowserWindow instance = null;
-        
+
         public enum Browsers
         {
             Chrome,
@@ -20,7 +18,7 @@ namespace RecTracPom
             Firefox
         }
 
-        private BrowserWindow() 
+        private BrowserWindow()
         {
             // default value
             Browser = Browsers.Chrome;
@@ -30,7 +28,7 @@ namespace RecTracPom
         {
             get
             {
-                if (instance==null)
+                if (instance == null)
                 {
                     instance = new BrowserWindow();
                 }
@@ -54,7 +52,7 @@ namespace RecTracPom
             }
 
             Load(Url, Browser);
-            
+
         }
 
         public void Load(string Url, Browsers Browser)
@@ -63,7 +61,7 @@ namespace RecTracPom
             this.Browser = Browser;
 
             IWebDriver driver;
-            
+
             switch (Browser)
             {
                 case Browsers.Edge:

@@ -41,5 +41,10 @@ namespace RecTracPom.OnScreenElements
 
         }
 
+        public string GetValue()
+        {
+            return WebElement.GetAttribute("value");
+        }
+
     }
 }

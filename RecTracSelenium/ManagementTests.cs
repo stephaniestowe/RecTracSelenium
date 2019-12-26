@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RecTracPom;
-using RecTracPom.OnScreenElements;
 using RecTracActions;
 
 
@@ -11,6 +9,7 @@ namespace RecTracSelenium.TicketTests
     public class ManagementTests
     {
         private const string url = "http://qa-stephanies:4180/wbwsc/clientdemo.wsc/login.html?InterfaceParameter=RecTracNextGenStephanie#/login";
+        private const BrowserWindow.Browsers browser = BrowserWindow.Browsers.Edge;
 
         private TestContext testContextInstance;
         public TestContext TestContext
@@ -22,7 +21,7 @@ namespace RecTracSelenium.TicketTests
         [TestInitialize]
         public void Startup()
         {
-            Session.OpenStandard(BrowserWindow.Browsers.Chrome, url, "zzz", "password");
+            Session.OpenStandard(browser, url, "zzz", "password");
         }
 
         [TestCleanup]
@@ -34,19 +33,23 @@ namespace RecTracSelenium.TicketTests
         [TestMethod]
         public void Crud()
         {
+
             CrudDriver driver = CrudDriver.Instance;
             foreach (CrudItem item in driver.Items)
             {
                 item.Navigate();
-                
                 item.Add();
-                Assert.IsTrue(item.CheckExists(), "Added item exists.");
+                bool success = item.CheckExists();
+                Assert.IsTrue(success);
+      
                 item.Change();
-                Assert.IsTrue(item.CheckChange(), "Item change successful.");
+                success = item.CheckChange();
+                Assert.IsTrue(success);
                 item.Delete();
                 Assert.IsFalse(item.CheckExists(), "Deleted item does not exist.");
                 item.CloseActiveTab();
             }
         }
+
     }
 }

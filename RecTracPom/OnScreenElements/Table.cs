@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace RecTracPom.OnScreenElements
 {
-    public class Table
+    public class Table : Element
     {
         private By finder;
         private By byRows = By.XPath("//tbody/tr[contains(@class, 'ui-state-default')]"); 

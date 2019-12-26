@@ -4,16 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{43C7B883-284B-41FC-AF2C-07CE8557B794}</ProjectGuid>
+    <ProjectGuid>{485F9A56-1FB9-4F6C-8062-B9684254D614}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RecTracPom</RootNamespace>
-    <AssemblyName>RecTracPom</AssemblyName>
+    <RootNamespace>WebTracPom</RootNamespace>
+    <AssemblyName>WebTracPom</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,14 +29,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -51,39 +43,12 @@
     <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
     </Reference>
-    <Reference Include="WebDriver.Support, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowserWindow.cs" />
-    <Compile Include="DialogDefaultRecordAdd.cs" />
-    <Compile Include="DialogInformation.cs" />
-    <Compile Include="ModuleActivityManagement.cs" />
-    <Compile Include="ModuleActivitySectionManagement.cs" />
-    <Compile Include="ModuleHouseholdManagement.cs" />
-    <Compile Include="ModulePosTicketManagement.cs" />
-    <Compile Include="ModuleSystemCode.cs" />
-    <Compile Include="OnScreenElements\DatePicker.cs" />
-    <Compile Include="OnScreenElements\IModule.cs" />
-    <Compile Include="OnScreenElements\IUpdatePanel.cs" />
-    <Compile Include="UpdatePanelActivity.cs" />
-    <Compile Include="UpdatePanelActivitySection.cs" />
-    <Compile Include="UpdatePanelHousehold.cs" />
-    <Compile Include="UpdatePanelPosTicket.cs" />
-    <Compile Include="OnScreenElements\Button.cs" />
-    <Compile Include="OnScreenElements\Dialog.cs" />
-    <Compile Include="OnScreenElements\Element.cs" />
-    <Compile Include="OnScreenElements\Table.cs" />
-    <Compile Include="OnScreenElements\Textbox.cs" />
-    <Compile Include="PageHome.cs" />
-    <Compile Include="PageLogin.cs" />
-    <Compile Include="PanelModuleCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UpdatePanelsBottomButtons.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

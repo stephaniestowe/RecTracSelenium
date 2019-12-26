@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using RecTracPom.OnScreenElements;
 using System.Collections.ObjectModel;
+using System.Threading;
 
 namespace RecTracPom
 {
@@ -23,7 +24,6 @@ namespace RecTracPom
         private static readonly By byTeamName = By.XPath("//button[starts-with(@id, 'globalsaleslookup_buttonteamname')]");
 
         private static By byEmailColumn = By.XPath("//td[@data-property='sahousehold_primaryemailaddress']/div"); // get the div within the cell for the text
-        private static By byHouseholdIdColumn = By.XPath("//td[@data-property='sahousehold_householdnumber']/div"); // get the div within the cell for the text
         private static By byCityColumn = By.XPath("//td[@data-property='sahousehold_primarycity']/div"); // get the div within the cell for the text
 
         private static By byDeleteButton = By.XPath("//button[starts-with(@id, 'globalsaleslookup_buttonmaintenancedelete')]");
@@ -111,7 +111,7 @@ namespace RecTracPom
                     break;
             }
             btnLookupType.Click();
-
+            Thread.Sleep(1000);
         }
 
         public string GetPrimaryEmail()
@@ -135,9 +135,9 @@ namespace RecTracPom
         /// <param name="code">The code.</param>
         /// <returns>
         ///   <c>true</c> if the specified code is exists; otherwise, <c>false</c>.</returns>
-        public bool IsExists(string householdId)
+        public bool IsExists(string lastName)
         {
-            DoPrimaryFilter(householdId);
+            DoPrimaryFilter(lastName);
 
             Table table = new Table(byDataTable);
 
@@ -145,11 +145,12 @@ namespace RecTracPom
             {
                 try
                 {
-                    ReadOnlyCollection<IWebElement> cols = row.FindElements(byHouseholdIdColumn);
+                    By byHouseholdLastNameColumn = By.XPath("//td[@data-property='sahousehold_lastname']/div"); // get the div within the cell for the text
+                    ReadOnlyCollection<IWebElement> cols = row.FindElements(byHouseholdLastNameColumn);
 
                     foreach (IWebElement col in cols)
                     {
-                        if (col.Text.ToLower() == householdId.ToLower())
+                        if (col.Text.ToLower() == lastName.ToLower())
                         {
                             return true;
                         }
