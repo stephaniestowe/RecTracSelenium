@@ -1,15 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RecTracPom;
+﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RecTracActions;
+using RecTracPom;
 
 
-namespace RecTracSelenium.TicketTests
+namespace RecTracSelenium.ManagementTests
 {
     [TestClass]
     public class ManagementTests
     {
         private const string url = "http://qa-stephanies:4180/wbwsc/clientdemo.wsc/login.html?InterfaceParameter=RecTracNextGenStephanie#/login";
         private const BrowserWindow.Browsers browser = BrowserWindow.Browsers.Edge;
+
 
         private TestContext testContextInstance;
         public TestContext TestContext
@@ -21,13 +24,14 @@ namespace RecTracSelenium.TicketTests
         [TestInitialize]
         public void Startup()
         {
-            Session.OpenStandard(browser, url, "zzz", "password");
+            Session.OpenStandardAnyBrowser(url, "zzz", "password");
+
         }
 
         [TestCleanup]
         public void Cleanup()
         {
-            Session.CloseStandard();
+           Session.CloseStandard();
         }
 
         [TestMethod]
@@ -41,15 +45,17 @@ namespace RecTracSelenium.TicketTests
                 item.Add();
                 bool success = item.CheckExists();
                 Assert.IsTrue(success);
-      
+                      
                 item.Change();
                 success = item.CheckChange();
                 Assert.IsTrue(success);
                 item.Delete();
                 Assert.IsFalse(item.CheckExists(), "Deleted item does not exist.");
                 item.CloseActiveTab();
+                
             }
         }
+
 
     }
 }

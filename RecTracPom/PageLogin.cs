@@ -44,8 +44,14 @@ namespace RecTracPom
             driver.FindElement(bySignIn).Click();
         }
 
-        public string GetHeader()
+        public string GetHeader(bool withWait)
         {
+            // This function gets the header on the LOGIN page.
+            // One if its uses is to check for the SESSION CONTINUE. 
+            // What can happen is that the login page with the lookupRoot element is still present at the
+            // time of seeking it but gone by the time the byHeader element is sought.
+            // This results in a runtime error. So an option to wait is added.
+            if (withWait) Thread.Sleep(1500);
             ReadOnlyCollection<IWebElement> localLookupRoot = driver.FindElements(this.lookupRoot);
             if (localLookupRoot.Count == 0)
             {
@@ -61,7 +67,7 @@ namespace RecTracPom
             {
                 System.TimeSpan waitTime = new System.TimeSpan(0, 0, 1);
                 Thread.Sleep(waitTime); 
-                if (GetHeader() == LoginContinue)
+                if (GetHeader(true) == LoginContinue)
                 {
                     return true;
                 }

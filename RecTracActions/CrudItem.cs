@@ -65,6 +65,7 @@ namespace RecTracActions
 
         public void Change()
         {
+            Thread.Sleep(1000); // table paint needs time as well as recognizing selection of row
             PanelModuleCommon.ChangeButtonClick();
             Panel.SetChangeValue(Code);
             UpdatePanelsBottomButtons.SaveButtonClick();

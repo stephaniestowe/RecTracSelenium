@@ -17,7 +17,7 @@ namespace RecTracActions
             Thread.Sleep(2000);
         }
 
-        public void CloseActiveTab()
+        public static void CloseActiveTab()
         {
             PanelModuleCommon.DoCloseActiveTabEntire();
         }

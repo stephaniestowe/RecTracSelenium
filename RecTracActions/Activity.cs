@@ -49,10 +49,12 @@ namespace RecTracActions
 
         public void Delete(string code)
         {
+            
             bool exists = ModuleActivityManagement.Instance.IsExists(code);
             if (!exists)
             {
-                throw new System.Exception("Cannot delete item. Item does not exist");
+                string errorMessage = Resource.ItemDoesNotExist;
+                throw new System.Exception(errorMessage);
             }
             base.Delete();
         }

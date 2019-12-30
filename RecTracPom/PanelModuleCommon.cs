@@ -55,8 +55,8 @@ namespace RecTracPom
         {
             // So there is a defect in EDGE whereby the behavior of the code containted in the hover on the tab executes without
             // error but the action underneath does not occur. So in Edge, callng the hover method of the TAB as seen in the else condition 
-            // below
-            // 
+            // below does nto display the CLOSE button which needs to be clicked.
+            // So for Edge, javascript is used to display the button directly.
             IWebElement close;
             
             if (BrowserWindow.Instance.Browser == BrowserWindow.Browsers.Edge)

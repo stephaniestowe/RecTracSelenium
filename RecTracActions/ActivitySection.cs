@@ -8,6 +8,9 @@ namespace RecTracActions
     public class ActivitySection : ManagementActor , IManagementActor
     {
         private static ActivitySection instance = null;
+        // These values only apply to activies thus are constants here rather than available through a resource.
+        private static readonly DateTime defaultBeginTime = Convert.ToDateTime("01:00 PM");
+        private static readonly DateTime defaultEndTime = Convert.ToDateTime("02:00 PM");
 
         // When adding a NEW Activity Section, in particular, there are fields on the form that are required.
         // A test may not need to specify these values. So default values are provided in the properties.
@@ -18,8 +21,8 @@ namespace RecTracActions
         public string FacilityText { get; set; } = ConstructFacilityText();
         public DateTime BeginDate { get; set; } = DateTime.Today;
         public DateTime EndDate { get; set; } = DateTime.Today.AddDays(30);
-        public DateTime BeginTime { get; set; } = Convert.ToDateTime("01:00 PM");
-        public DateTime EndTime { get; set; } = Convert.ToDateTime("02:00 PM");
+        public DateTime BeginTime { get; set; } = defaultBeginTime;
+        public DateTime EndTime { get; set; } = defaultEndTime;
         
 
         private ActivitySection()

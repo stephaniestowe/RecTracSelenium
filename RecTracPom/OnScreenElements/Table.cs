@@ -60,10 +60,8 @@ namespace RecTracPom.OnScreenElements
         }
         private IWebElement GetTable()
         {
-
-            System.TimeSpan waitTime = new System.TimeSpan(0, 0, 20);
-            OpenQA.Selenium.Support.UI.WebDriverWait wait = new OpenQA.Selenium.Support.UI.WebDriverWait(BrowserWindow.Instance.Driver, waitTime);
-            IWebElement table = wait.Until(ExpectedConditions.ElementIsVisible(finder));
+            this.Finder = finder;
+            IWebElement table = this.WebElement;
 
             if (table.TagName.ToUpper() != "TABLE")
             {

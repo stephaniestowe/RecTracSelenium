@@ -1,13 +1,17 @@
 ﻿[*.cs]
 
-# IDE0025: Use expression body for properties
-csharp_style_expression_bodied_properties = true:none
+# SAS: I am not really seeing the value in System.Uri usage. We can easily change if a need arises.
+# CA1054: Uri parameters should not be strings
+dotnet_diagnostic.CA1054.severity = none
 
+# SAS: Static warnings are not always applicable. Renders access to static members impossible for singleton and other instances of a class
 # CA1822: Mark members as static
 dotnet_diagnostic.CA1822.severity = none
 
-# IDE0022: Use block body for methods
-csharp_style_expression_bodied_methods = false:none
-
+#SAS We just aren't super worried about format across culture etc..
 # CA1305: Specify IFormatProvider
-dotnet_diagnostic.CA1305.severity = silent
+dotnet_diagnostic.CA1305.severity = none
+
+@SAS No benefit at this time to forcing System.Uri vs string. We can change if needs be.
+# CA2234: Pass system uri objects instead of strings
+dotnet_diagnostic.CA2234.severity = none

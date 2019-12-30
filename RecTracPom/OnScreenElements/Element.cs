@@ -1,10 +1,14 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using SeleniumExtras.WaitHelpers;
+using System;
 using System.Threading;
 
 namespace RecTracPom.OnScreenElements
 {
+    /// <summary>
+    /// This is the base class that is inherited by many of the other onscreen object elements like textbox and button. It's Selenium WebElement getter has a wait for the element to become visible at acquisition improving stability.
+    /// </summary>
     public class Element
     {
         private By finder;
@@ -23,22 +27,21 @@ namespace RecTracPom.OnScreenElements
         {
             set
             {
-                // TODO: Re think SINGLTEON (which I have not done here, why do I do it in pages?).
-                // Does ANYTHING have to be a singleton if we are just using the contrsuctor to get a 
-                // new instance of the brwoser window instance?
                 finder = value;
             }
-
-
         }
 
         public IWebElement WebElement
         {
             get
             {
+                if (finder == null)
+                {
+                    throw new ArgumentOutOfRangeException("Finder", "Must set Finder property either in constructor or with the property setter itself. Finder cannot be null.");
+                }
                 System.TimeSpan waitTime = new System.TimeSpan(0, 0, 20);
                 OpenQA.Selenium.Support.UI.WebDriverWait wait = new OpenQA.Selenium.Support.UI.WebDriverWait(BrowserWindow.Instance.Driver, waitTime);
-                IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(finder));
+                IWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(finder));
                 return element;
             }
         }
@@ -66,7 +69,7 @@ namespace RecTracPom.OnScreenElements
             // different solutions.
             if (BrowserWindow.Instance.Browser == BrowserWindow.Browsers.Firefox)
             {
-                Thread.Sleep(400);
+                Thread.Sleep(1000);
             }
 
             WebElement.Click();

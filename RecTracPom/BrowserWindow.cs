@@ -47,7 +47,7 @@ namespace RecTracPom
         public void Load()
         {
             // Url and Browser are necessary. Browser defaults to IE and is never empty.
-            if (string.IsNullOrEmpty(this.Url))
+            if (string.IsNullOrEmpty(Url))
             {
                 // throw invalid operation exception
                 throw new InvalidOperationException("Url property must be set to use parameterless LoadHome.");
@@ -87,7 +87,7 @@ namespace RecTracPom
             }
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
             Driver = driver;
-            driver.Url = this.Url;
+            driver.Url = this.Url.ToString();
         }
 
         public void Close()
