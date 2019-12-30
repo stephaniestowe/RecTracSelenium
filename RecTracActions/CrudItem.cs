@@ -53,6 +53,7 @@ namespace RecTracActions
 
         public bool CheckChange()
         {
+            Module.DoPrimaryFilter(Code);
             Thread.Sleep(1000); // paint of the table needs time
             string changedValue = Module.GetChangedText();
             if (changedValue == Code)
@@ -66,6 +67,7 @@ namespace RecTracActions
         public void Change()
         {
             Thread.Sleep(1000); // table paint needs time as well as recognizing selection of row
+            Module.DoPrimaryFilter(Code);
             PanelModuleCommon.ChangeButtonClick();
             Panel.SetChangeValue(Code);
             UpdatePanelsBottomButtons.SaveButtonClick();

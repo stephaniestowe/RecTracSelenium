@@ -69,28 +69,8 @@ namespace RecTracPom
            
             SetTicketCodeFilter(code);
             Table table = new Table(byTicketDataTable);
-
-            foreach (IWebElement row in table.Rows)
-            {
-                try
-                {
-                    ReadOnlyCollection<IWebElement> cols = row.FindElements(byCellTicketCode);
-
-                    foreach (IWebElement col in cols)
-                    {
-                        if (col.Text.ToLower() == code.ToLower())
-                        {
-                            return true;
-                        }
-                    }
-                }
-                catch
-                {
-                    return false;
-                }
-
-            }
-            return false;
+            return table.IsItemExists(byCellTicketCode, code);
+            
         }
 
         public void DoPrimaryFilter(string value)

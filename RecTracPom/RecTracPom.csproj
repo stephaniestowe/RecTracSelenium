@@ -54,6 +54,7 @@
     <Compile Include="ModuleActivityManagement.cs" />
     <Compile Include="ModuleActivitySectionManagement.cs" />
     <Compile Include="ModuleHouseholdManagement.cs" />
+    <Compile Include="ModuleLock.cs" />
     <Compile Include="ModulePosTicketManagement.cs" />
     <Compile Include="ModuleSystemCode.cs" />
     <Compile Include="OnScreenElements\DatePicker.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="UpdatePanelActivity.cs" />
     <Compile Include="UpdatePanelActivitySection.cs" />
     <Compile Include="UpdatePanelHousehold.cs" />
+    <Compile Include="UpdatePanelLock.cs" />
     <Compile Include="UpdatePanelPosTicket.cs" />
     <Compile Include="OnScreenElements\Button.cs" />
     <Compile Include="OnScreenElements\Dialog.cs" />

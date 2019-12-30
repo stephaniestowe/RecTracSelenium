@@ -55,6 +55,7 @@
     <Compile Include="CrudItem.cs" />
     <Compile Include="Household.cs" />
     <Compile Include="IManagementActor.cs" />
+    <Compile Include="Lock.cs" />
     <Compile Include="ManagementActor.cs" />
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -69,5 +69,47 @@ namespace RecTracPom.OnScreenElements
             }
             return table;
         }
+
+        /// <summary>The value is sought in the cells of the table found with the Selenium By object.</summary>
+        /// <param name="byCellToSearch">
+        ///   <para>
+        /// A Selenium By object which specifies the finder for the CELL in the table. The By object for this cell is often some piece of
+        /// the data-property element as with this example in the ticket management module --
+        /// <font color="#ab5207">By.XPath("//td[@data-property='psticketmain_ticketcode']");
+        /// </font></para>
+        ///   <para>
+        ///     <font color="#000000">Since RecTrac  pages are consistently rendered, this pattern (data-property identification of the cell) is reliable across data pages.</font>
+        ///   </para>
+        ///   <note type="tip">This method is best (and fastest) when the page's unique filter was applied before calling.<br /><para></para></note>
+        ///   <para></para>
+        /// </param>
+        /// <param name="value">The value to seek in the cells returned by byCellToSearch.</param>
+        /// <returns>
+        ///   <c>If the item of the specified value is found in the cells, return TRUE else FALSE.</c>
+        /// </returns>
+        public bool IsItemExists(By byCellToSearch, string value)
+        {
+            foreach (IWebElement row in Rows)
+            {
+                try
+                {
+                    ReadOnlyCollection<IWebElement> cols = row.FindElements(byCellToSearch);
+
+                    foreach (IWebElement col in cols)
+                    {
+                        if (col.Text.ToLower() == value.ToLower())
+                        {
+                            return true;
+                        }
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
+            return false;
+        }
     }
 }

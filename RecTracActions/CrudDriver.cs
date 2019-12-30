@@ -41,6 +41,9 @@ namespace RecTracActions
         {
             CrudItem item = new CrudItem();
 
+            item = new CrudItem("Lock", UpdatePanelLock.Instance, ModuleLock.Instance, Lock.Instance);
+            itemsToCrud.Add(item);
+
             item = new CrudItem("Household", UpdatePanelHousehold.Instance, ModuleHouseholdManagement.Instance, Household.Instance);
             itemsToCrud.Add(item);
 
