@@ -5,9 +5,12 @@ namespace RecTracPom
 {
     public class ModuleActivityManagement : IModule
     {
+        // finder By objects
         private static  By byActivityDataTable = By.XPath("//table[starts-with(@id, 'aractivitymain_datagrid')]");
         private static By byActivityCodeFilter = By.XPath("//input[contains(@name,'filter_aractivity_activitycode')]");
         private static By byShortDescription = By.XPath("//td[@data-property='aractivity_shortdescription']/div"); // get the div within the cell for the text
+        private static By byActivityCodeFilterType = By.XPath("//select[contains(@name, 'filterby_aractivity_activitycode')]");
+
         private static ModuleActivityManagement instance = null;
 
         public Table DataGrid => new Table(byActivityDataTable);
@@ -40,6 +43,8 @@ namespace RecTracPom
 
         public static void SetActivityCodeFilter(string activityCode)
         {
+            FilterType filterType = new FilterType(byActivityCodeFilterType);
+            filterType.SelectOption("Equals");
             Textbox txtActivityCodeFilter = new Textbox(byActivityCodeFilter);
             txtActivityCodeFilter.SetText(activityCode, Textbox.KeyToPress.Enter);
             

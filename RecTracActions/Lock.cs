@@ -35,6 +35,7 @@ namespace RecTracActions
         public void Delete(string code)
         {
             bool exists = ModuleLock.Instance.IsExists(code);
+            Thread.Sleep(1000);
             if (!exists)
             {
                 string errorMessage = Resource.ItemDoesNotExist;
@@ -51,6 +52,14 @@ namespace RecTracActions
         public void Navigate()
         {
             PageHome.Instance.Navigate("Lock Management");
+        }
+
+        public bool IsClonable
+        {
+            get
+            {
+                return true;
+            }
         }
     }
 }

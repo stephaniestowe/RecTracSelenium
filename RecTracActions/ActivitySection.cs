@@ -68,7 +68,15 @@ namespace RecTracActions
 
         public void Delete(string code)
         {
-            throw new System.NotImplementedException();
+            bool exists = ModuleActivitySectionManagement.Instance.IsExists(code);
+            if (!exists)
+            {
+                string errorMessage = Resource.ItemDoesNotExist;
+                throw new System.Exception(errorMessage);
+            }
+            ModuleActivitySectionManagement.Instance.DataGrid.SelectRow(1);
+            base.Delete();
+
         }
 
         public bool IsExists(string code)
@@ -87,5 +95,28 @@ namespace RecTracActions
             return "Lap pool_Fantasy Land_Fantasy Land Fitness Pool Two"; //TODO: Figure out some kind of config so not using hard coded values.
         }
 
+        public bool IsClonable
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public new void Clone(string code)
+        {
+            string clonedValue = code + Resource.CloneSuffix;
+            PanelModuleCommon.CloneButtonClick();
+
+            DialogFileMaintenanceClone cloneDlg = new DialogFileMaintenanceClone();
+            cloneDlg.SetNewRecordCodeList(clonedValue);
+            cloneDlg.SetNewSeason(Season);
+            cloneDlg.SetNewYear(Year);
+            cloneDlg.ContinueButtonClick();
+            DialogInformation infoDlg = new DialogInformation();
+            infoDlg.ClickButtonByButtonTitle("Process");
+            RecTracPom.OnScreenElements.Dialog dialog = new RecTracPom.OnScreenElements.Dialog("Success");
+            dialog.CloseDialogByCloseButton();
+        }
     }
 }

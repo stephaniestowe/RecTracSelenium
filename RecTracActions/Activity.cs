@@ -7,12 +7,14 @@ namespace RecTracActions
     {
 
         private static Activity instance = null;
-
+        
         private Activity()
         {
 
         }
 
+        public string Season { get; set; } = "Fall";
+        public string Year { get; set; } = Utilities.GetCurrentYearString();
         public static Activity Instance
         {
             get
@@ -56,7 +58,32 @@ namespace RecTracActions
                 string errorMessage = Resource.ItemDoesNotExist;
                 throw new System.Exception(errorMessage);
             }
+            ModuleActivityManagement.Instance.DataGrid.SelectRow(1);
             base.Delete();
+        }
+
+        public bool IsClonable
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public new void Clone(string code)
+        {
+            string clonedValue = code + Resource.CloneSuffix;
+            PanelModuleCommon.CloneButtonClick();
+
+            DialogFileMaintenanceClone cloneDlg = new DialogFileMaintenanceClone();
+            cloneDlg.SetNewRecordCodeList(clonedValue);
+            cloneDlg.SetNewSeason(Season);
+            cloneDlg.SetNewYear(Year);
+            cloneDlg.ContinueButtonClick();
+            DialogInformation infoDlg = new DialogInformation();
+            infoDlg.ClickButtonByButtonTitle("Process");
+            RecTracPom.OnScreenElements.Dialog dialog = new RecTracPom.OnScreenElements.Dialog("Success");
+            dialog.CloseDialogByCloseButton();
         }
     }
 }

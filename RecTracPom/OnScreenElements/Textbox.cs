@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System.Threading;
 
 namespace RecTracPom.OnScreenElements
 {
@@ -28,6 +29,11 @@ namespace RecTracPom.OnScreenElements
         // Used to follow entry 
         public void SetText(string text, KeyToPress key)
         {
+            // Firefox is pesky wrt text boxes. Gotta wait an extra sec
+            if (BrowserWindow.Instance.Browser == BrowserWindow.Browsers.Firefox)
+            {
+                Thread.Sleep(1000);
+            }
             SetText(text);
             switch(key)
             {

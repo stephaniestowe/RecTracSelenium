@@ -25,7 +25,7 @@ namespace RecTracSelenium.ManagementTests
         public void Startup()
         {
             Session.OpenStandardAnyBrowser(url, "zzz", "password");
-
+            
         }
 
         [TestCleanup]
@@ -49,8 +49,18 @@ namespace RecTracSelenium.ManagementTests
                 item.Change();
                 success = item.CheckChange();
                 Assert.IsTrue(success);
+
+                if (item.IsClonable)
+                {
+                    item.Clone();
+                    success = item.CheckClone();
+                    Assert.IsTrue(success);
+                    item.CleanupClone();
+                }
+
                 item.Delete();
                 Assert.IsFalse(item.CheckExists(), "Deleted item does not exist.");
+                
                 item.CloseActiveTab();
                 
             }

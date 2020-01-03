@@ -9,12 +9,20 @@ namespace RecTracActions
     public class CrudItem
     {
         const int codeLength = 10;
+        private string cloneCode;
 
         public IUpdatePanel Panel { get; set; }
         public IModule Module { get; set; }
         public string Code { get; set; }
 
         public string Title { get; set; }
+
+        public bool IsClonable {
+            get
+            {
+                return Actor.IsClonable;
+            }
+        }
 
         public IManagementActor Actor { get; set; }
 
@@ -63,6 +71,27 @@ namespace RecTracActions
             return false;
         }
 
+        public bool CheckClone()
+        {
+            if (Actor.IsClonable)
+            {
+                cloneCode = Code + Resource.CloneSuffix;
+                Module.DoPrimaryFilter(cloneCode);
+                Thread.Sleep(1000); //allow table paint
+                if (!Module.IsExists(cloneCode))
+                {
+                    return false;
+                }
+
+                string changedValue = Module.GetChangedText();
+                if (changedValue == Code)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return true;
+        }
 
         public void Change()
         {
@@ -73,6 +102,15 @@ namespace RecTracActions
             UpdatePanelsBottomButtons.SaveButtonClick();
         }
 
+        public void Clone()
+        {
+            
+            Module.DoPrimaryFilter(Code);
+            Actor.Clone(Code);
+            
+
+        }
+
         public void CloseActiveTab()
         {
             PanelModuleCommon.DoCloseActiveTabEntire();
@@ -80,7 +118,12 @@ namespace RecTracActions
 
         public void Delete()
         {
-            Actor.Delete();
+            Actor.Delete(Code);
+        }
+
+        public void CleanupClone()
+        {
+            Actor.Delete(cloneCode);
         }
     }
 }

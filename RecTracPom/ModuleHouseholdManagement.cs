@@ -169,6 +169,9 @@ namespace RecTracPom
         {
             Button btn = new Button(byDeleteButton);
             btn.Click();
+            DialogInformation info = new DialogInformation();
+            info.ClickButtonByButtonTitle("Yes");
+
         }
         
     }

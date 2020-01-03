@@ -14,6 +14,8 @@ namespace RecTracActions
         
         bool IsExists(string code);
 
+        void Clone(string code);
 
+        bool IsClonable { get; }
     }
 }

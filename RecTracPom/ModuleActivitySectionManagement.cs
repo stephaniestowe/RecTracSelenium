@@ -9,9 +9,11 @@ namespace RecTracPom
     {
         private static ModuleActivitySectionManagement instance = null;
 
+        // By objects for finding eleements on page.
         private static By byDataTable = By.XPath("//table[starts-with(@id, 'arsectionmain_datagrid')]");
         private static By bySectionCodeFilter = By.XPath("//input[contains(@name,'filter_arsection_section')]");
         private static By byShortDescription = By.XPath("//td[@data-property='arsection_shortdescription']/div"); // get the div within the cell for the text
+        private static By bySectionFilterType = By.XPath("//select[contains(@name,'filterby_arsection_section')]");
 
         private ModuleActivitySectionManagement()
         {
@@ -78,6 +80,10 @@ namespace RecTracPom
             // Whoooo weeeeee selenium is fast. So fast, that though the text box can report clickable
             // and the entry still gets mucked up.
             Thread.Sleep(2000);
+
+            FilterType filterType = new FilterType(bySectionFilterType);
+            filterType.SelectOption("Equals");
+
             Textbox txt = new Textbox(bySectionCodeFilter);
             txt.SetText(value);
             txt.WebElement.SendKeys(Keys.Tab);

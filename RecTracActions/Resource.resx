@@ -117,7 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CloneDialogTitle" xml:space="preserve">
+    <value>File Maintenance Clone</value>
+    <comment>This is the string that is used to identify the dialog in constructors that access this dialog.</comment>
+  </data>
+  <data name="CloneSuffix" xml:space="preserve">
+    <value>XXX</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="InformationDialogTitle" xml:space="preserve">
+    <value>Information</value>
+  </data>
   <data name="ItemDoesNotExist" xml:space="preserve">
     <value>Cannot perform desired operation on sought object. Object does not exist.</value>
+  </data>
+  <data name="ProcessButtonTitle" xml:space="preserve">
+    <value>Process</value>
+  </data>
+  <data name="SuccessDialogTitle" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

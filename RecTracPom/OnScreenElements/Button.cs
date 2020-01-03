@@ -9,6 +9,10 @@ namespace RecTracPom.OnScreenElements
         {
         }
 
+        public Button(IWebElement root, By finder) : base(root, finder)
+        {
+
+        }
         public Button() : base()
         {
 

@@ -11,7 +11,9 @@ namespace RecTracPom
         private static By byMoreButton = By.XPath("//button[@title='More']");
         private static By byDeleteButton = By.XPath("//button[@title='Delete']");
         private static By byChangeButton = By.XPath("//button[@title='Change']");
+        private static By byCloneButton = By.XPath("//button[@title='Clone']");
         private static By byClosePanelButton = By.XPath("//button[@title='Close Panel']");
+
         private static By byTab = By.XPath("//a[@class='active header-tab']");
             
 
@@ -39,6 +41,12 @@ namespace RecTracPom
             Thread.Sleep(1000);
             Button btnChange = new Button(byChangeButton);
             btnChange.Click();
+        }
+
+        public static void CloneButtonClick()
+        {
+            Button btn = new Button(byCloneButton);
+            btn.Click();
         }
 
         /// <summary>  Does the combination of actions/clicks to perform a delete with dialog responses (where applicable).</summary>
@@ -75,5 +83,6 @@ namespace RecTracPom
             }
             close.Click();
         }
+
     }
 }

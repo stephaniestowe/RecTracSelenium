@@ -50,16 +50,17 @@
   <ItemGroup>
     <Compile Include="BrowserWindow.cs" />
     <Compile Include="DialogDefaultRecordAdd.cs" />
+    <Compile Include="DialogFileMaintenanceClone.cs" />
     <Compile Include="DialogInformation.cs" />
     <Compile Include="ModuleActivityManagement.cs" />
     <Compile Include="ModuleActivitySectionManagement.cs" />
     <Compile Include="ModuleHouseholdManagement.cs" />
     <Compile Include="ModuleLock.cs" />
     <Compile Include="ModulePosTicketManagement.cs" />
-    <Compile Include="ModuleSystemCode.cs" />
     <Compile Include="OnScreenElements\DatePicker.cs" />
     <Compile Include="OnScreenElements\IModule.cs" />
     <Compile Include="OnScreenElements\IUpdatePanel.cs" />
+    <Compile Include="OnScreenElements\FilterType.cs" />
     <Compile Include="UpdatePanelActivity.cs" />
     <Compile Include="UpdatePanelActivitySection.cs" />
     <Compile Include="UpdatePanelHousehold.cs" />

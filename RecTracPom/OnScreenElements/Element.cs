@@ -12,12 +12,18 @@ namespace RecTracPom.OnScreenElements
     public class Element
     {
         private By finder;
+        private IWebElement root = null;
 
         public Element(By finder)
         {
             this.finder = finder;
         }
 
+        public Element(IWebElement root, By finder)
+        {
+            this.root = root;
+            this.finder = finder;
+        }
         public Element()
         {
 
@@ -35,13 +41,22 @@ namespace RecTracPom.OnScreenElements
         {
             get
             {
+                IWebElement element;
                 if (finder == null)
                 {
                     throw new ArgumentOutOfRangeException("Finder", "Must set Finder property either in constructor or with the property setter itself. Finder cannot be null.");
                 }
                 System.TimeSpan waitTime = new System.TimeSpan(0, 0, 20);
                 OpenQA.Selenium.Support.UI.WebDriverWait wait = new OpenQA.Selenium.Support.UI.WebDriverWait(BrowserWindow.Instance.Driver, waitTime);
-                IWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(finder));
+                if (root == null)
+                {
+                    element = wait.Until(ExpectedConditions.ElementIsVisible(finder));
+                }
+                else
+                {
+                    element = root.FindElement(finder);
+                    
+                }
                 return element;
             }
         }

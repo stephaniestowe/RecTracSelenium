@@ -2,7 +2,9 @@
 {
     public class DialogInformation : OnScreenElements.Dialog
     {
-        public DialogInformation(string title) : base(title)
+        private static readonly string title = "Information";
+
+        public DialogInformation() : base(title)
         {
 
         }

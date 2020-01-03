@@ -11,6 +11,8 @@ namespace RecTracPom
         private static By byTicketHeaderTable = By.XPath("//table"); //first table is header table.
         private static By byCellTicketCode = By.XPath("//td[@data-property='psticketmain_ticketcode']");
         private static By byShortDescription = By.XPath("//td[@data-property='psticketmain_shortdescription']/div"); // get the div within the cell for the text
+        private static By byTicketCodeFilterType = By.XPath("//select[contains(@name,'filterby_psticketmain_ticketcode')]");
+
         private static ModulePosTicketManagement instance = null;
 
         private ModulePosTicketManagement()
@@ -32,6 +34,9 @@ namespace RecTracPom
 
         public static void SetTicketCodeFilter(string ticketCode)
         {
+            FilterType filterType = new FilterType(byTicketCodeFilterType);
+            filterType.SelectOption("Equals");
+
             Textbox txtFilterCode = new Textbox(byTicketCodeFilter);
             txtFilterCode.SetText(ticketCode, Textbox.KeyToPress.Enter);
             

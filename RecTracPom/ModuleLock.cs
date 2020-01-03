@@ -11,7 +11,8 @@ namespace RecTracPom
         private By byDataTable = By.XPath("//table[starts-with(@id, 'lklockmain_datagrid')]");
         private By byLockNumberFilter = By.XPath("//input[contains(@name,'filter_lklock_lockcode')]");
         private By byLockNumberCell = By.XPath("//td[@data-property='lklock_lockcode']");
-        private static By byLockMakeCell = By.XPath("//td[@data-property='lklock_lockcode']/div"); // get the div within the cell for the text
+        private static By byLockMakeCell = By.XPath("//td[@data-property='lklock_make']/div"); // get the div within the cell for the text
+        private static By byLockNumberFilterSelect = By.XPath("//select[contains(@name, 'filterby_lklock_lockcode')]");
 
         private ModuleLock()
         {
@@ -46,11 +47,19 @@ namespace RecTracPom
         {
             DoPrimaryFilter(code);
             Table table = new Table(byDataTable);
-            return table.IsItemExists(byLockNumberCell, code);
+            bool exists = table.IsItemExists(byLockNumberCell, code);
+            if (exists)
+            {
+                // select the wro
+                table.SelectRow(1);
+            }
+            return exists;
         }
 
         public void SetLockNumberFilter(string lockNum)
         {
+            FilterType filter = new FilterType(byLockNumberFilterSelect);
+            filter.SelectOption("Equals");
             Textbox txt = new Textbox(byLockNumberFilter);
             txt.SetText(lockNum, Textbox.KeyToPress.Tab);
             
@@ -64,5 +73,6 @@ namespace RecTracPom
                 return lbl.Text;
             }
         }
+
     }
 }

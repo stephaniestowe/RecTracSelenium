@@ -61,11 +61,74 @@ namespace RecTracActions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File Maintenance Clone.
+        /// </summary>
+        internal static string CloneDialogTitle {
+            get {
+                return ResourceManager.GetString("CloneDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XXX.
+        /// </summary>
+        internal static string CloneSuffix {
+            get {
+                return ResourceManager.GetString("CloneSuffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        internal static string InformationDialogTitle {
+            get {
+                return ResourceManager.GetString("InformationDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot perform desired operation on sought object. Object does not exist..
         /// </summary>
         internal static string ItemDoesNotExist {
             get {
                 return ResourceManager.GetString("ItemDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process.
+        /// </summary>
+        internal static string ProcessButtonTitle {
+            get {
+                return ResourceManager.GetString("ProcessButtonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        internal static string SuccessDialogTitle {
+            get {
+                return ResourceManager.GetString("SuccessDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

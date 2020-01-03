@@ -1,6 +1,0 @@
-﻿namespace RecTracPom
-{
-    class ModuleSystemCode
-    {
-    }
-}

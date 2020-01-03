@@ -52,6 +52,15 @@ namespace RecTracActions
         private void SelectTicket(string ticketCode)
         {
             _ = IsExists(ticketCode);
+            ModulePosTicketManagement.Instance.DataGrid.SelectRow(1);
+        }
+
+        public bool IsClonable
+        {
+            get
+            {
+                return true;
+            }
         }
     }
 }
