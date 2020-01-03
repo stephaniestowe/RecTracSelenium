@@ -28,7 +28,6 @@ namespace RecTracPom.OnScreenElements
 
         public void SelectOption(string displayText)
         {
-            Thread.Sleep(1000);
             string buttonFinder = finder.ToString();
             buttonFinder = buttonFinder.Replace("By.XPath: ", "");
             buttonFinder = buttonFinder + "/preceding-sibling::button";
