@@ -15,7 +15,6 @@ namespace RecTracPom.OnScreenElements
 
         // A dialog is identifable by the class of the div it lives in. It is uniquely identifiable by this class and the elements
         // of the title span
-        //TODO: Make this comment better.
         public Dialog(string title)
         {
             sTitle = title;

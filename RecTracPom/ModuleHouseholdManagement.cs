@@ -57,7 +57,7 @@ namespace RecTracPom
             TeamName
         }
 
-        public Table DataGrid => new Table(byDataTable); //TODO: Team decide what we want for syntax, this or get ...
+        public Table DataGrid => new Table(byDataTable); 
 
         /// <summary>
         /// This method is part of the IModule implementation. For a household, the primary filter is by household number. This method enters a value in the lookup text box and filters by Household Number using the lookup drop down.

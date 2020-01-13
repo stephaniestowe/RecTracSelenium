@@ -95,13 +95,7 @@ namespace RecTracActions
             return "Lap pool_Fantasy Land_Fantasy Land Fitness Pool Two"; //TODO: Figure out some kind of config so not using hard coded values.
         }
 
-        public bool IsClonable
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public bool IsClonable => true;
 
         public new void Clone(string code)
         {

@@ -1,4 +1,18 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : RecTracPom
+// Author           : stephanieas
+// Created          : 11-05-2019
+//
+// Last Modified By : stephanieas
+// Last Modified On : 01-08-2020
+// ***********************************************************************
+// <copyright file="BrowserWindow.cs" company="Vermont Systems Inc.">
+//     Copyright ©  2019
+// </copyright>
+// <summary>Browser Window is the class responsible for loading the web browser and holding the instance of the Selenium WebDriver that is used in the remainder of the solution.
+//</summary>
+// ***********************************************************************
+using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Chrome;
@@ -12,7 +26,8 @@ namespace RecTracPom
     {
         const string driverLocation = "C:\\SeleniumDrivers";
         private static BrowserWindow instance = null;
-        
+
+        /// <summary>  Browser that the tests in solution can run.</summary>
         public enum Browsers
         {
             Chrome,
